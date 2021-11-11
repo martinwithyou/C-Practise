@@ -1,24 +1,23 @@
-#include <cstring>
 #include <iostream>
 using namespace std;
-struct student{
-    char name[50];
-    char sex;
-    int age;
-    char sid[50];
-    float score;
+class Goods{
+    public:
+        int Amount;
+        float Price;
 };
 int main(){
-    struct student stu[3] = {
-        {"zhang", 'm', 21, "20200101", 30},
-        {"xiao", 'm', 21, "20200101", 60},
-        {"mei", 'm', 21, "20200101", 20},
-    };
-    struct student *p;
-    cout << "name" << "___" << "sex" << "___" << "age"  << "___" << "sid"  << "___" << "score" <<endl;
-    p = stu;
-    for(int i=0;i<3;i++,p++){
-        cout << (*p).name << "___" << (*p).sex << "___" << (*p).age  << "___" << (*p).sid  << "___" << (*p).score <<endl;
-    } 
+    Goods myPen;
+    Goods myBook;
+    double Total_Price = 0;
+    myPen.Amount = 10;
+    myPen.Price = 12;
+
+    myBook.Amount = 10;
+    myBook.Price = 1277;
+
+    int total_Price = myPen.Price * myPen.Amount;
+    cout << "___" << total_Price <<endl;
+    total_Price = myBook.Price * myBook.Amount;
+    cout << "___" << total_Price <<endl;
     return 0;
 }
