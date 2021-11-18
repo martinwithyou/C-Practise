@@ -127,6 +127,8 @@ void modifyPerson(Addressbooks * abs){
             abs->personArray[ret].m_Name = name;
 
             cout << "*******please input sex************" <<endl;
+            cout << "********1->male***********" <<endl;
+            cout << "********2->female***********" <<endl;
             int sex;
             cin >> sex;
             abs->personArray[ret].m_Sex = sex;
@@ -145,6 +147,10 @@ void modifyPerson(Addressbooks * abs){
             string address;
             cin >> address;
             abs->personArray[ret].m_Addr = address;
+
+            cout << "*******modify successfully************" <<endl;
+            system("pause");
+            system("cls");
 
     }else{
         cout << "*******nothing you can find************" <<endl;
