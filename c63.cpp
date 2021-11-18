@@ -69,7 +69,72 @@ void addPerson(Addressbooks * abs){
         system("cls");
     }
 }
+//show all person
+void showPerson(Addressbooks * abs)
+{
+    if(abs->m_Size == 0){
+        cout << "no person you can connect" <<endl;
+    }else{
+        for(int i=0; i<abs->m_Size;i++){
+            cout << "name" << abs->personArray[i].m_Name << "/t";
+            cout << "sex" << (abs->personArray[i].m_Sex == 1 ? "男":"女") << "/t";
+            cout << "age" << abs->personArray[i].m_Age << "/t";
+            cout << "phone" << abs->personArray[i].m_Phone << "/t";
+            cout << "address" << abs->personArray[i].m_Addr <<endl;
+        }
+    }
 
+    system("pause");
+    system("cls");
+}
+//select peroson
+int isExist(Addressbooks * abs, string name){
+    for(int i = 0; i< abs->m_Size; i++){
+        if(abs->personArray[i].m_Name == name){
+            return i;
+        }else{
+            cout << "********no person which you select***********" <<endl;
+            return -1;
+        }
+    }
+}
+//find person
+void findPerson(Addressbooks * abs){
+    cout << "*******please input some words************" <<endl;
+    string name;
+    cin >> name;
+    int ret = isExist(abs, name);
+    if(ret != -1){
+            cout << "name" << abs->personArray[ret].m_Name << "/t";
+            cout << "sex" << (abs->personArray[ret].m_Sex == 1 ? "男":"女") << "/t";
+            cout << "age" << abs->personArray[ret].m_Age << "/t";
+            cout << "phone" << abs->personArray[ret].m_Phone << "/t";
+            cout << "address" << abs->personArray[ret].m_Addr <<endl;
+    }else{
+        cout << "*******nothing you can find************" <<endl;
+    }
+}
+
+//delete person
+int deletePerson(Addressbooks * abs){
+    cout << "*******please input your name************" <<endl;
+    string name;
+    cin >> name;
+
+    int ret = isExist(abs, name);
+    if(ret != -1){
+        for(int i = ret; i< abs->m_Size;i++){
+            abs->personArray[i]=abs->personArray[i+1];
+        }
+        abs->m_Size--;
+        cout << "*****delete successfully**********" <<endl;
+    }else{
+        cout << "*****no this person**********" <<endl;
+    }
+
+    system("pause");
+    system("cls");
+}
 // showMenu
 void showMenu(){
     cout << "*******************" <<endl;
@@ -99,6 +164,16 @@ int main(){
                 break;
             case 3:
                 //delete
+                {
+                    cout << "********please delete someone***********" <<endl;
+                    string name;
+                    cin >> name;
+                    if(isExist(&abs, name) == -1){
+                        cout << "********no someone***********" <<endl;
+                    }else{
+                        cout << "********you get someone***********" <<endl;
+                    }
+                }
                 break; 
             case 4:
                 //select
