@@ -114,7 +114,42 @@ void findPerson(Addressbooks * abs){
         cout << "*******nothing you can find************" <<endl;
     }
 }
+// modify person
+void modifyPerson(Addressbooks * abs){
+    cout << "*******please input someone you will modify************" <<endl;
+    string name;
+    cin >> name;
+    int ret = isExist(abs, name);
+    if(ret != -1){
+            cout << "*******please input name************" <<endl;
+            string name;
+            cin >> name;
+            abs->personArray[ret].m_Name = name;
 
+            cout << "*******please input sex************" <<endl;
+            int sex;
+            cin >> sex;
+            abs->personArray[ret].m_Sex = sex;
+
+            cout << "*******please input age************" <<endl;
+            int age;
+            cin >> age;
+            abs->personArray[ret].m_Age = age;
+
+            cout << "*******please input phone************" <<endl;
+            string phone;
+            cin >> phone;
+            abs->personArray[ret].m_Phone = phone;
+
+            cout << "*******please input phone************" <<endl;
+            string address;
+            cin >> address;
+            abs->personArray[ret].m_Addr = address;
+
+    }else{
+        cout << "*******nothing you can find************" <<endl;
+    }
+}
 //delete person
 int deletePerson(Addressbooks * abs){
     cout << "*******please input your name************" <<endl;
