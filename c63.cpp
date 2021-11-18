@@ -176,6 +176,13 @@ int deletePerson(Addressbooks * abs){
     system("pause");
     system("cls");
 }
+//clearMenu
+void clearPerson(Addressbooks * abs){
+    abs->m_Size = 0;
+    cout << "*********clear successfully**********" <<endl;
+    system("pause");
+    system("cls");
+}
 // showMenu
 void showMenu(){
     cout << "*******************" <<endl;
