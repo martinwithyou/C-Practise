@@ -1,4 +1,7 @@
 #include "workerManager.h"
+#include "employee.h"
+#include "maneger.h"
+#include "boss.h"
 WorkerManager::WorkerManager(){
     this -> m_EmpNum = 0;
     this -> m_EmpArray = NULL;
@@ -43,9 +46,40 @@ void WorkerManager::Add_Emp(){
             int id;
             string name;
             int dSelect;
+
+            cout << "****"<<i+1 << "***id"<<endl;
+            cin >> id; 
+            cout << "****"<<i+1 << "***name"<<endl;
+            cin >> name;
+            cout << "****1" << "***empluee"<<endl;
+            cout << "****2" << "***empluee"<<endl;
+            cout << "****3" << "***empluee"<<endl;
+            cin >> dSelect;
+            Worker * worker = NULL;
+            switch (dSelect)
+            {
+                case 1:
+                    worker = new Employee(id, name, 1);
+                    break;
+                case 2:
+                    worker = new Maneger(id, name, 2);
+                    break;
+                case 3:
+                    worker = new Boss(id, name, 3);
+                    break;
+                default:
+                    break;
+                newSpace[this->m_EmpNum + i] = worker;
+            }
+            delete [] this->m_EmpArray;
+            this->m_EmpArray = newSpace;
+            this->m_EmpNum = newSize;
+            cout << "****3" << addNum <<"***empluee"<<endl;
         }
     }else{
-
+        cout << "*******wrong****"<<endl;
     }
+    system("pause");
+    system("cls");
 }
 

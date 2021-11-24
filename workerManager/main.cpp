@@ -16,6 +16,7 @@ int main(){
                 break;  
             case 1:
                 //add
+                wm.Add_Emp();
                 break;
             case 2:
                 //show

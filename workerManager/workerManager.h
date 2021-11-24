@@ -2,6 +2,9 @@
 #include <iostream>
 using namespace std;
 #include "worker.h"
+#include "employee.h"
+#include "maneger.h"
+#include "boss.h"
 class WorkerManager{
     public:
         WorkerManager();
