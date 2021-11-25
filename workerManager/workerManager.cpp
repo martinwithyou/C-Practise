@@ -3,8 +3,32 @@
 #include "maneger.h"
 #include "boss.h"
 WorkerManager::WorkerManager(){
-    this -> m_EmpNum = 0;
-    this -> m_EmpArray = NULL;
+    //no file
+    ifstream ifs;
+    ifs.open(FILENAME,ios::in);
+    if(!ifs.is_open()){
+        cout << "****no file*********" <<endl;
+        this -> m_EmpNum = 0;
+        this -> m_EmpArray = NULL;
+        this -> m_FileIsEmpty = true;
+        ifs.close();
+        return;
+    }
+    //hava file,no data
+    char ch;
+    ifs >> ch;
+    if(ifs.eof()){
+        cout << "****no data*********" <<endl;
+        this -> m_EmpNum = 0;
+        this -> m_EmpArray = NULL;
+        this -> m_FileIsEmpty = true;
+        ifs.close();
+        return;
+    }
+    //have file and data
+    int num = this -> get_EmpNum();
+    cout << "****have"<< num << "persons" <<endl;
+    this->m_EmpNum = num;
 }
 WorkerManager::~WorkerManager(){
     if(this->m_EmpArray!=NULL){
@@ -43,6 +67,19 @@ void WorkerManager::save(){
     }
     ofs.close();
 };
+//
+int WorkerManager::get_EmpNum(){
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+    int id;
+    string name;
+    int dId;
+    int num = 0;
+    while(ifs >> id && ifs >> name && ifs >> dId){
+        num++;
+    }
+    return num;
+}
 //add
 void WorkerManager::Add_Emp(){
     cout << "********input**********" <<endl; 
@@ -88,6 +125,7 @@ void WorkerManager::Add_Emp(){
             delete [] this->m_EmpArray;
             this->m_EmpArray = newSpace;
             this->m_EmpNum = newSize;
+            this->m_FileIsEmpty = false;
             cout << "add**" << addNum <<"***empluee"<<endl;
             this->save();
         }

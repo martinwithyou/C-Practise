@@ -24,5 +24,9 @@ class WorkerManager{
         void Add_Emp();
         //
         void save();
+        //
+        bool m_FileIsEmpty;
+        //
+        int get_EmpNum();
 
 };
