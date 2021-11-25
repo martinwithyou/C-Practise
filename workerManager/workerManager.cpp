@@ -89,7 +89,22 @@ int WorkerManager::get_EmpNum(){
 }        
 //
 void WorkerManager::Del_Emp(){
-
+    cout << "********please input number**********" <<endl; 
+    int id = 0;
+    cin >> id;
+    int index = this-> IsExist(id);
+    if(index != -1){
+        for(int i = index; i < this->m_EmpNum-1; i++){
+           this->m_EmpArray[i]=this->m_EmpArray[i+1];
+        }
+        this -> m_EmpNum--;
+        this -> save();
+        cout << "****success****"<<endl;
+        system("pause");
+        system("cls"); 
+    }else{
+        cout << "****failed****"<<endl; 
+    }
 };
 //
 int WorkerManager::IsExist(int id){
