@@ -12,7 +12,7 @@ int main(){
             case 0:
                 //turn_off
                 wm.ExitSystem();
-                return 0;
+                //return 0;
                 break;  
             case 1:
                 //add
@@ -20,6 +20,7 @@ int main(){
                 break;
             case 2:
                 //show
+                wm.Show_Emp();
                 break;
             case 3:
                 //delete

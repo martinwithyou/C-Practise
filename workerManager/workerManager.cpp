@@ -86,6 +86,32 @@ int WorkerManager::get_EmpNum(){
         num++;
     }
     return num;
+}        
+//
+void WorkerManager::Del_Emp(){
+
+};
+//
+int WorkerManager::IsExist(int id){
+    int index = -1;
+    for(int i = 0; i<this->m_EmpNum;i++){
+        if(this->m_EmpArray[i]->m_Id == id){
+            index = i;
+        }
+    }
+    return index;
+};
+//
+void WorkerManager::Show_Emp(){
+    if(this->m_FileIsEmpty){
+        cout << "********empty file**********" <<endl; 
+    }else{
+        for(int i=0;i< m_EmpNum;i++){
+            this->m_EmpArray[i]->ShowInfo();
+        }
+    }
+    system("pause");
+    system("cls");
 }
 //
  void WorkerManager::int_Emp(){
