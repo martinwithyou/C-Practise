@@ -5,6 +5,9 @@ using namespace std;
 #include "employee.h"
 #include "maneger.h"
 #include "boss.h"
+
+#include <fstream>
+#define FILENAME "empFile.txt"
 class WorkerManager{
     public:
         WorkerManager();
@@ -19,6 +22,7 @@ class WorkerManager{
         Worker ** m_EmpArray;
         //
         void Add_Emp();
-
+        //
+        void save();
 
 };

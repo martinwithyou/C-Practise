@@ -7,7 +7,10 @@ WorkerManager::WorkerManager(){
     this -> m_EmpArray = NULL;
 }
 WorkerManager::~WorkerManager(){
-    
+    if(this->m_EmpArray!=NULL){
+        delete[] this->m_EmpArray;
+        this->m_EmpArray = NULL;
+    }
 }
 //show menu
 void WorkerManager::Show_Menu(){
@@ -29,6 +32,17 @@ void WorkerManager::ExitSystem(){
     system("pause");
     exit(0);
 }
+//save
+void WorkerManager::save(){
+    ofstream ofs;
+    ofs.open(FILENAME, ios::out);
+    for(int i =0;i<this->m_EmpNum;i++){
+        ofs <<this->m_EmpArray[i]->m_Id<<""
+            <<this->m_EmpArray[i]->m_Name<<""
+            <<this->m_EmpArray[i]->m_DeptId<<""<<endl;
+    }
+    ofs.close();
+};
 //add
 void WorkerManager::Add_Emp(){
     cout << "********input**********" <<endl; 
@@ -74,7 +88,8 @@ void WorkerManager::Add_Emp(){
             delete [] this->m_EmpArray;
             this->m_EmpArray = newSpace;
             this->m_EmpNum = newSize;
-            cout << "****3" << addNum <<"***empluee"<<endl;
+            cout << "add**" << addNum <<"***empluee"<<endl;
+            this->save();
         }
     }else{
         cout << "*******wrong****"<<endl;
