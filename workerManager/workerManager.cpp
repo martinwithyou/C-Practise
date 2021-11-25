@@ -80,6 +80,29 @@ int WorkerManager::get_EmpNum(){
     }
     return num;
 }
+//
+ void WorkerManager::int_Emp(){
+    ifstream ifs;
+    ifs.open(FILENAME, ios::in);
+
+    int id;
+    string name;
+    int dId;
+
+    int index=0;
+    while(ifs >> id && ifs >> name && ifs >> dId){
+        Worker * worker = NULL;
+        if(dId == 1 ){
+            worker = new Employee(id, name, 1);  
+        }else if(dId == 2){
+            worker = new Maneger(id, name, 2);
+        }else{
+            worker = new Boss(id, name, 3);
+        }
+        this->m_EmpArray[index] = worker;
+        index++;
+    }
+ }
 //add
 void WorkerManager::Add_Emp(){
     cout << "********input**********" <<endl; 

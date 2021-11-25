@@ -28,5 +28,7 @@ class WorkerManager{
         bool m_FileIsEmpty;
         //
         int get_EmpNum();
+        //
+        void int_Emp();
 
 };
