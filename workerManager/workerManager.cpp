@@ -29,6 +29,13 @@ WorkerManager::WorkerManager(){
     int num = this -> get_EmpNum();
     cout << "****have"<< num << "persons" <<endl;
     this->m_EmpNum = num;
+    this->m_EmpArray = new Worker*[this->m_EmpNum];
+    this->int_Emp();
+    for(int i=0;i<this->m_EmpNum;i++){
+        cout <<this->m_EmpArray[i]->m_Id<<""<<endl;
+        cout <<this->m_EmpArray[i]->m_Name<<""<<endl;
+        cout <<this->m_EmpArray[i]->m_DeptId<<""<<endl;
+    }
 }
 WorkerManager::~WorkerManager(){
     if(this->m_EmpArray!=NULL){
@@ -102,6 +109,7 @@ int WorkerManager::get_EmpNum(){
         this->m_EmpArray[index] = worker;
         index++;
     }
+    ifs.close();
  }
 //add
 void WorkerManager::Add_Emp(){
