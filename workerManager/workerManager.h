@@ -10,7 +10,9 @@ using namespace std;
 #define FILENAME "empFile.txt"
 class WorkerManager{
     public:
+        //
         WorkerManager();
+        //
         ~WorkerManager();
         //show
         void Show_Menu();
@@ -36,5 +38,13 @@ class WorkerManager{
         void Del_Emp();
         //
         int IsExist(int id);
+        //
+        void Mod_Emp();
+        //
+        void find_Emp();
+        //
+        void Sort_Emp();
+        //
+        void Clean_File();
 
 };
