@@ -17,3 +17,7 @@ void SpeechManager::show_Menu(){
     cout << "*******************" << endl;
     cout << endl;
 }
+void SpeechManager::exitSystem(){
+    cout << "*******welcome one more time************" << endl;
+    system("pause");
+}

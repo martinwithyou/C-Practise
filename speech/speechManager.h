@@ -10,4 +10,6 @@ class SpeechManager{
         ~SpeechManager();
         //
         void show_Menu();
+        //
+        void exitSystem();
 };
