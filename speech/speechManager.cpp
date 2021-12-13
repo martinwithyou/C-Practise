@@ -1,6 +1,7 @@
 #include "speechManager.h"
 
 SpeechManager::SpeechManager(){
+    this->initSpeech();
 
 }
 
@@ -21,3 +22,11 @@ void SpeechManager::exitSystem(){
     cout << "*******welcome one more time************" << endl;
     system("pause");
 }
+void SpeechManager::initSpeech(){
+    //
+    this->v1.clear();
+    this->v2.clear();
+    this->vVictory.clear();
+    this->m_Speaker.clear();
+    this->m_Index = 1;
+};
