@@ -5,6 +5,10 @@ using namespace std;
 #include <map>
 #include "speaker.h"
 #include <algorithm>
+#include <deque>
+#include <functional>
+#include <numeric>
+#include <string>
 class SpeechManager{
     public:
         //
@@ -23,6 +27,12 @@ class SpeechManager{
         void startSpeech();
         //
         void speechDraw();
+        //
+        void speechContest();
+        //
+        void showScore();
+        //
+        void saveRecord();
         //
         vector<int>v1;
         //

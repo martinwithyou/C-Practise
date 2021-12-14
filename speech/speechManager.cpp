@@ -1,6 +1,9 @@
 #include "speechManager.h"
 #include "speaker.h"
 #include <algorithm>
+#include <deque>
+#include <numeric>
+#include <fstream>
 SpeechManager::SpeechManager(){
     //
     this->initSpeech();
@@ -48,9 +51,54 @@ void SpeechManager::createSpeaker(){
         this->m_Speaker.insert(make_pair(i*10001,sp));
     }
 };
+void SpeechManager::showScore(){
+    cout << "......no" << this->m_Index << "times" << endl;
+    vector<int>v;
+    if(this->m_Index == 1){
+        v = v2;
+    }else{
+        v = vVictory;
+    }
+    for(vector<int>::iterator it = v.begin();it!=v.end();it++){
+        cout << "player no" << *it << "name" << this->m_Speaker[*it].m_Name << "score" << this->m_Speaker[*it].m_Score << endl; 
+    }
+    cout << endl;
+    system("cls");
+    this->show_Menu();
+
+};
+void SpeechManager::saveRecord(){
+    ofstream ofs;
+    ofs.open("speech.csv",ios::out|ios::app);
+    for(vector<int>::iterator it = vVictory.begin();it !=vVictory.end();it++){
+        ofs << *it << "," << m_Speaker[*it].m_Score[1]<<",";
+
+    }
+    ofs << endl;
+    ofs.close();
+    cout << "have finished" << endl;
+};
 void SpeechManager::startSpeech(){
     //
     this->speechDraw();
+    //
+    this->speechContest();
+    //
+    this->showScore();
+    //
+    this->m_Index++;
+    //
+    this->speechDraw();
+    //
+    this->speechContest();
+    //
+    this->showScore();
+    //
+    this->saveRecord();
+    //
+    cout << "game over" << endl;
+    system("pause");
+
 };
 void SpeechManager::speechDraw(){
     cout << "no." << this->m_Index << "times" << endl;
@@ -69,4 +117,56 @@ void SpeechManager::speechDraw(){
     }
     cout << "******************" << endl;
     system("pause");
+};
+void SpeechManager::speechContest(){
+    cout << "no." << this->m_Index << "times" << endl;
+    //
+    multimap<double, int, greater<double> > groupScore;
+    //
+    int num = 0;
+    //
+    vector<int>v_Src;
+    if(this->m_Index == 1){
+        v_Src = v1;
+    }else{
+        v_Src = v2;
+    }
+
+    for(vector<int>::iterator it = v_Src.begin();it != v_Src.end();it++){
+        deque<double>d;
+        for(int i = 0; i<10; i++){
+            double score =(rand()%401+ 600)/10.f;
+            cout << score << "";
+            d.push_back(score);
+
+        }
+        sort(d.begin(),d.end(),greater<double>());
+        d.pop_front();
+        d.pop_back();
+
+        double sum = accumulate(d.begin(), d.end(), 0.0f);
+        double avg = sum / (double)d.size();
+
+        this->m_Speaker[*it].m_Score[this->m_Index - 1 ] = avg;
+
+        groupScore.insert(make_pair(avg, *it));
+        //
+        if(num % 6 == 0){
+            cout << num/6 << "group" << endl;
+            for(multimap<double, int, greater<double> >::iterator it = groupScore.begin();it != groupScore.end();it++){
+                cout << "no" << it->second << "name" << this->m_Speaker[it->second].m_Name << endl;
+                cout << "score" << this->m_Speaker[it->second].m_Score[this->m_Index - 1] << endl;
+            }
+            int count = 0;
+            for(multimap<double, int, greater<double> >::iterator it = groupScore.begin();it != groupScore.end();it++){
+                if(this->m_Index == 1){
+                    v2.push_back((*it).second);
+                }else{
+                    vVictory.push_back((*it).second);
+                }
+            }
+            groupScore.clear();
+        }
+
+    }
 };
