@@ -4,6 +4,7 @@ using namespace std;
 #include <vector>
 #include <map>
 #include "speaker.h"
+#include <algorithm>
 class SpeechManager{
     public:
         //
@@ -16,6 +17,12 @@ class SpeechManager{
         void exitSystem();
         //
         void initSpeech();
+        //
+        void createSpeaker();
+        //
+        void startSpeech();
+        //
+        void speechDraw();
         //
         vector<int>v1;
         //
