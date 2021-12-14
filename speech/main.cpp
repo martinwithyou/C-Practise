@@ -21,6 +21,7 @@ int main()
                 sm.startSpeech();
                 break;
             case 2:
+                sm.loadRecord();
                 break;
             case 3:
                 break;

@@ -78,6 +78,9 @@ void SpeechManager::saveRecord(){
     ofs.close();
     cout << "have finished" << endl;
 };
+void SpeechManager::loadRecord(){
+    
+};
 void SpeechManager::startSpeech(){
     //
     this->speechDraw();
@@ -139,7 +142,6 @@ void SpeechManager::speechContest(){
             double score =(rand()%401+ 600)/10.f;
             cout << score << "";
             d.push_back(score);
-
         }
         sort(d.begin(),d.end(),greater<double>());
         d.pop_front();

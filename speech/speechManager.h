@@ -9,6 +9,7 @@ using namespace std;
 #include <functional>
 #include <numeric>
 #include <string>
+#include <fstream>
 class SpeechManager{
     public:
         //
@@ -33,6 +34,8 @@ class SpeechManager{
         void showScore();
         //
         void saveRecord();
+        //
+        void loadRecord();
         //
         vector<int>v1;
         //

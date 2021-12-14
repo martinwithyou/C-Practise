@@ -3,6 +3,7 @@
         "iostream": "cpp",
         "string": "cpp",
         "iosfwd": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "map": "cpp"
     }
 }
