@@ -97,6 +97,7 @@ void SpeechManager::startSpeech(){
     this->saveRecord();
     //
     cout << "game over" << endl;
+    //
     system("pause");
 
 };
