@@ -4,6 +4,8 @@ using namespace std;
 #include <string>
 int main()
 {
+    //
+    srand((unsigned int)time(NULL));
     //show menu
     SpeechManager sm;
     //

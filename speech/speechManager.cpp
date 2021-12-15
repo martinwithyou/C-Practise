@@ -38,6 +38,8 @@ void SpeechManager::initSpeech(){
     this->vVictory.clear();
     this->m_Speaker.clear();
     this->m_Index = 1;
+    //
+    this->m_Record.clear();
 };
 void SpeechManager::createSpeaker(){
     string nameSeed = "asdfghjklqwe";
@@ -79,6 +81,7 @@ void SpeechManager::saveRecord(){
     ofs << endl;
     ofs.close();
     cout << "have finished" << endl;
+    this->fileIsEmpty = false;
 };
 void SpeechManager::loadRecord(){
     ifstream ifs("speech.csv",ios::in);
@@ -130,8 +133,11 @@ void SpeechManager::loadRecord(){
 
 };
 void SpeechManager::showRecord(){
+    if(this->fileIsEmpty){
+        cout << "sorry ,no record can be find"  <<endl;
+    }
     for(int i = 0;i<this->m_Record.size();i++){
-        cout << "no" << i+1 << "times";
+        cout << "no" << i+1 << "times" <<endl;
         cout << "no" << this->m_Record[i][0] << this->m_Record[i][3]<< "times" << endl;
         cout << "no" << this->m_Record[i][1] << this->m_Record[i][4] << "times" << endl;
         cout << "no" << this->m_Record[i][2]  << this->m_Record[i][5]<< "times" << endl;
@@ -157,6 +163,12 @@ void SpeechManager::startSpeech(){
     //
     this->saveRecord();
     //
+    //reset
+    this->initSpeech();
+    //
+    this->createSpeaker();
+    //
+    this->loadRecord();
     cout << "game over" << endl;
     //
     system("pause");
