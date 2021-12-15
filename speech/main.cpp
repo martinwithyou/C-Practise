@@ -26,6 +26,7 @@ int main()
                 sm.loadRecord();
                 break;
             case 3:
+                sm.clearRecord();
                 break;
             case 0:
                 sm.exitSystem();
