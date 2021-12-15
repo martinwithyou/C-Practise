@@ -145,6 +145,28 @@ void SpeechManager::showRecord(){
     system("pause");
     system("cls");
 };
+void SpeechManager::clearRecord(){
+    cout << "are you sure clear" << endl;
+    cout << "1.true" << endl;
+    cout << "2.false" << endl;
+    int select = 0;
+    cin >> select;
+    if(select == 1){
+        ofstream ofs("speech.csv", ios::trunc);
+        ofs.close();
+        //
+        this->initSpeech();
+        //
+        this->createSpeaker();
+        //
+        this->loadRecord();
+        //
+        cout << "have cleared" << endl;
+    }else{
+        system("pause");
+        system("cls");
+    }
+};
 void SpeechManager::startSpeech(){
     //
     this->speechDraw();

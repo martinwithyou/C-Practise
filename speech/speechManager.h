@@ -39,6 +39,8 @@ class SpeechManager{
         //
         void showRecord();
         //
+        void clearRecord();
+        //
         bool fileIsEmpty;
         //
         map<int,vector<string> >m_Record;
