@@ -104,8 +104,40 @@ void SpeechManager::loadRecord(){
     string data;
     while(ifs >> data){
         cout << data << endl;
+        vector<string>v;
+
+        int pos = -1;
+        int start  = 0;
+        int index = 0;
+        while(true){
+            pos = data.find(",", start);
+            if(pos == -1){
+                break;
+            }
+            string temp = data.substr(start, pos - start);
+            cout << temp << endl;
+            start = pos + 1;
+        }
+
+        this->m_Record.insert(make_pair(index,v));
+        index++;
+
     }
     ifs.close();
+    for(map<int vector<string>>::iterator it = m_Record.begin();it!=m_Record.end();it++){
+
+    }
+
+};
+void SpeechManager::showRecord(){
+    for(int i = 0;i<this->m_Record.size();i++){
+        cout << "no" << i+1 << "times";
+        cout << "no" << this->m_Record[i][0] << this->m_Record[i][3]<< "times" << endl;
+        cout << "no" << this->m_Record[i][1] << this->m_Record[i][4] << "times" << endl;
+        cout << "no" << this->m_Record[i][2]  << this->m_Record[i][5]<< "times" << endl;
+    }
+    system("pause");
+    system("cls");
 };
 void SpeechManager::startSpeech(){
     //

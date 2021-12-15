@@ -37,9 +37,11 @@ class SpeechManager{
         //
         void loadRecord();
         //
+        void showRecord();
+        //
         bool fileIsEmpty;
         //
-        map<int,vector<string> >m_Recortl;
+        map<int,vector<string> >m_Record;
         //
         vector<int>v1;
         //
@@ -50,4 +52,6 @@ class SpeechManager{
         map<int, Speaker>m_Speaker;
         //
         int m_Index;
+        //
+
 };

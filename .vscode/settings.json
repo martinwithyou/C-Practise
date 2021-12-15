@@ -4,6 +4,7 @@
         "string": "cpp",
         "iosfwd": "cpp",
         "stdio.h": "c",
-        "map": "cpp"
+        "map": "cpp",
+        "ostream": "cpp"
     }
 }
