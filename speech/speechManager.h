@@ -37,6 +37,10 @@ class SpeechManager{
         //
         void loadRecord();
         //
+        bool fileIsEmpty;
+        //
+        map<int,vector<string> >m_Recortl;
+        //
         vector<int>v1;
         //
         vector<int>v2;

@@ -9,6 +9,8 @@ SpeechManager::SpeechManager(){
     this->initSpeech();
     //
     this->createSpeaker();
+    //
+    this->loadRecord();
 
 }
 
@@ -79,7 +81,31 @@ void SpeechManager::saveRecord(){
     cout << "have finished" << endl;
 };
 void SpeechManager::loadRecord(){
-    
+    ifstream ifs("speech.csv",ios::in);
+    //
+    if(!ifs.is_open()){
+        this->fileIsEmpty = true;
+        cout << "no file" << endl;
+        ifs.close();
+        return;
+    }
+    //
+    char ch;
+    ifs >> ch;
+    if(ifs.eof()){
+        cout << "file is empty" << endl;
+        this->fileIsEmpty =true;
+        ifs.close();
+        return;
+    }
+    //
+    this->fileIsEmpty = false;
+    ifs.putback(ch);
+    string data;
+    while(ifs >> data){
+        cout << data << endl;
+    }
+    ifs.close();
 };
 void SpeechManager::startSpeech(){
     //
